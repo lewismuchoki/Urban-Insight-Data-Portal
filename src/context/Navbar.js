@@ -7,7 +7,7 @@ export default function Navbar() {
     <div className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          Urban Insight <i class="fa-solid fa-house"></i>
+          Urban Insight <i className="fa-solid fa-house"></i>
         </Link>
         <ul className="nav-menu">
           <li className="nav-item">
