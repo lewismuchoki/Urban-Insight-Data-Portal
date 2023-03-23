@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 //import { Container, Row, Col, Card, Button, ListGroup } from 'react-bootstrap';
 import { useAuth } from '../../context/AuthContext'
 
 function Profile() {
-    const { currentUser, updateEmail, updatePassword,updateRole } = useAuth();
+    const { currentUser, updateEmail, updatePassword,  logout } = useAuth();
     //const user = useUser(currentUser?.uid);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-  
+    const navigate = useNavigate()
     const roleRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -25,10 +26,6 @@ function Profile() {
       }
   
       const promises = [];
-  
-      if (roleRef.current.value !== currentUser.role) {
-          promises.push(updateRole(roleRef.current.value));
-        }
   
       if (emailRef.current.value !== currentUser.email) {
           promises.push(updateEmail(emailRef.current.value));
@@ -48,6 +45,17 @@ function Profile() {
         setLoading(false);
       }
 
+      async function handleLogout() {
+        setError("")
+    
+        try {
+          await logout()
+          navigate("/login")
+        } catch {
+          setError("Failed to log out")
+        }
+      }
+
   return (
     <div className="container">
     <h2>Profile</h2>
@@ -56,9 +64,10 @@ function Profile() {
       <div className="mb-3">
         <label className="form-label">Role</label>
       <input
-        type="text"
+        type="role"
         ref={roleRef}
         className="form-control"
+        defaultValue={currentUser.role}
         readOnly
       />
       </div>
@@ -74,8 +83,11 @@ function Profile() {
       <label className="form-label">Confirm Password</label>
       <input type="password" ref={confirmPasswordRef} placeholder="Leave blank to keep the same" className="form-control" />
     </div>
-    <button type="submit" disabled={loading} className="btn btn-primary">
+    <button type="submit" disabled={loading} className=" mb-4 w-100 btn btn-primary">
       Update
+    </button>
+    <button type="submit"  disabled={loading} className='w-100 btn btn-primary' onClick={handleLogout}>
+         Log Out
     </button>
   </form>
 </div>

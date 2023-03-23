@@ -26,8 +26,8 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/login" className="nav-links">
-              Login
+            <Link to="/profile" className="nav-links">
+              Account
             </Link>
           </li>
         </ul>
