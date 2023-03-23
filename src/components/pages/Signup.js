@@ -3,11 +3,14 @@ import { useState, useRef } from 'react'
 import { Button, Form, Card, Alert } from "react-bootstrap"
 import { useAuth } from '../../context/AuthContext' 
 import { Link, useNavigate } from "react-router-dom"
+import { collection, addDoc } from "firebase/firestore";
+import { db } from '../../firebase'
 
 export default function Signup() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
+    const roleRef = useRef()
     const { signup } = useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
@@ -21,21 +24,28 @@ export default function Signup() {
       }
   
       try {
-        setError("")
-        setLoading(true)
-        console.log("Attempting to create user with email: ", emailRef.current.value);
-        await signup(emailRef.current.value, passwordRef.current.value)
-        console.log("Successfully created user!");
+        setError("");
+        setLoading(true);
+        console.log("Attempting to create user with email: ", emailRef.current.value)
+        const newUserCredential = await signup(
+          emailRef.current.value,
+          passwordRef.current.value
+        );
+        await addDoc(collection(db, "users"), {
+          uid: newUserCredential.user.uid,
+          email: newUserCredential.user.email,
+          role: roleRef.current.value,
+          approved: false,
+        });
         navigate('/')
-      } catch (error) {
+      } catch(error) {
         console.error("Error creating user:", error);
         setError("Failed to create an account");
-      } finally {
-        setLoading(false)
       }
   
-      setLoading(false)
+      setLoading(false);
     }
+
     return (
       <>
         <Card>
@@ -55,6 +65,13 @@ export default function Signup() {
                 <Form.Label>Confrirm Password</Form.Label>
                 <Form.Control type="password" ref={passwordConfirmRef} required />
               </Form.Group>
+              <Form.Group id="role">
+              <Form.Label>Role</Form.Label>
+              <Form.Control as='select' ref={roleRef} required>
+               <option value="publisher">Publisher</option>
+               <option value="consumer">Consumer</option>
+              </Form.Control>
+            </Form.Group>
               <Button disabled = {loading} className="w-100 mt-2" type="submit">
                 Sign Up
               </Button>
