@@ -29,6 +29,8 @@ import {
     const [count, setCount] = useState(null);
     const [totalCount, setTotalCount] = useState(null);
     const [hide, setHide] = useState(false);
+    const [category, setCategory] = useState("");
+    const [tags, setTags] = useState([]);
   
     useEffect(() => {
       getDatasData();
@@ -121,7 +123,6 @@ import {
     return (
       <div>
         <div className="container">
-        <Search search={search} handleChange={handleChange} />
           <div className="row">
             <div style={{fontWeight: 'bold'}} className="Data-heading text-center py-2 mb-4">Data: {totalCount} datasets</div>
             {Datas?.map((Data) => (

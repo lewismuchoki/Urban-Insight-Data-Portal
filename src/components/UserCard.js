@@ -5,23 +5,23 @@ import { toast } from "react-toastify";
 
 const UserCard = ({ name, id }) => {
   const approveButtonStyle = {
-    borderRadius: "20px", // Set the border-radius to 20 pixels to create round edges
-    backgroundColor: "#00FF00", // Set the background color to green
-    color: "#000000", // Set the text color to white
-    padding: "10px 20px", // Add padding to the left and right sides of the button text
-    marginRight: "20px", // Add margin
-    border: "none", // Remove the border around the button
-    fontWeight: "bold", // Make the text inside the button bold
+    borderRadius: "20px", 
+    backgroundColor: "#00FF00", 
+    color: "#000000", 
+    padding: "10px 20px", 
+    marginRight: "20px", 
+    border: "none", 
+    fontWeight: "bold", 
   };
 
   const declineButtonStyle = {
-    borderRadius: "20px", // Set the border-radius to 20 pixels to create round edges
-    backgroundColor: "#FF0000", // Set the background color to red
-    color: "#fff", // Set the text color to white
-    padding: "10px 20px", // Add padding to the left and right sides of the button text
-    marginRight: "20px", // Add margin
-    border: "none", // Remove the border around the button
-    fontWeight: "bold", // Make the text inside the button bold
+    borderRadius: "20px", 
+    backgroundColor: "#FF0000", 
+    color: "#fff", 
+    padding: "10px 20px", 
+    marginRight: "20px", 
+    border: "none",
+    fontWeight: "bold", 
   };
 
   const containerStyle = {

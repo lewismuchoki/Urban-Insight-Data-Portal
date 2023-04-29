@@ -18,6 +18,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Data from "./pages/Data";
 import Approval from "./pages/Approval";
 import PublisherData from "./pages/PublisherData";
+import Search from "./components/Search";
 
 function App() {
   const [active, setActive] = useState("home");

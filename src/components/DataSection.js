@@ -35,13 +35,10 @@ const DataSection = ({
         // Check state of the user
         if (userDocSnapshot.data().role === "admin") {
           setisAdmin(true);
-          console.log("Admin confirmed");
         } else {
           setisAdmin(false);
-          console.log("Not Admin");
         }
       } catch (error) {
-        console.error("Error retrieving user status: ", error);
       }
     };
 

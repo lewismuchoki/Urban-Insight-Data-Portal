@@ -12,7 +12,7 @@ const initialState = {
   username: null,
 };
 
-const Header = ({ active, setActive, user, handleLogout }) => {
+const Navbar = ({ active, setActive, user, handleLogout }) => {
   const [state, setState] = useState(initialState);
   const userId = user?.uid;
   const [display, setDisplayBoolean] = useState(false);
@@ -203,4 +203,4 @@ const Header = ({ active, setActive, user, handleLogout }) => {
   );
 };
 
-export default Header;
+export default Navbar;
