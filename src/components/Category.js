@@ -11,7 +11,7 @@ const Category = ({ catgDatasCount }) => {
             <li key={index}>
               <Link
                 to={`/category/${item.category}`}
-                style={{ textDecoration: "none", float: "left", color: "#777" }}
+                style={{ textDecoration: "none", float: "left", color: "#001D3D" }}
               >
                 {item.category}
                 <span>({item.count})</span>

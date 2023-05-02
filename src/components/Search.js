@@ -54,7 +54,7 @@ const Search = ({ handleChange, filters, categories, setCategories,db }) => {
             name="text"
             value={filters.text}
             className="form-control search-input"
-            placeholder="Search insight"
+            placeholder="Search datasets..."
             onChange={handleChange}
           />
           <select

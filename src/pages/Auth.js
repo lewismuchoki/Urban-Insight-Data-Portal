@@ -231,7 +231,7 @@ const Auth = ({ setActive, setUser }) => {
                         style={{
                           textDecoration: "none",
                           cursor: "pointer",
-                          color: "#298af2",
+                          color: "#003566",
                         }}
                         onClick={() => setSignUp(false)}
                       >

@@ -24,7 +24,6 @@ const initialState = {
   likes: [],
   imgUrl:
     "https://firebasestorage.googleapis.com/v0/b/open-data-platform-1758c.appspot.com/o/wp2659176-art-wallpaper.jpg?alt=media&token=63b5fa2a-8df4-4fcc-b0b3-e52213510a3e",
-  username: null,
 };
 
 const categoryOption = [
@@ -81,6 +80,7 @@ const AddEditData = ({ user, setActive }) => {
     const uploadDocument = () => {
       const storageRef = ref(storage, document.name);
       const uploadTask = uploadBytesResumable(storageRef, document);
+      const fileName = document.name;
 
       if (id) {
         setupdateDataText("Uploading...");
@@ -126,6 +126,7 @@ const AddEditData = ({ user, setActive }) => {
 
             setForm((prev) => ({ ...prev, imgUrl: imgUrl }));
             setForm((prev) => ({ ...prev, documentUrl: downloadUrl }));
+            setForm((prev) => ({ ...prev, filename: fileName }));
           });
         }
       );

@@ -241,7 +241,6 @@ const Home = ({ setActive, user, active }) => {
     <div className="container-fluid pb-4 pt-4 padding">
       <div className="container padding">
         <div className="row mx-0" style={{ textAlign: "center" }}>
-          <Trending Datas={trendDatas} />
           <Search filters={filters} handleChange={handleChange} categories={categories} setCategories={setCategories} db={db}/>
           <div style={{ paddingTop: "30px" }} className="col-md-8">
             <div className="Data-heading text-start py-2 mb-4 text-center heading py-2">

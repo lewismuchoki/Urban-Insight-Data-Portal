@@ -11,7 +11,7 @@ const Publisher = ({ pubDataCount }) => {
             <li key={index}>
               <Link
                 to={`/author/${item.author}`}
-                style={{ textDecoration: "none", float: "left", color: "#777" }}
+                style={{ textDecoration: "none", float: "left", color: "#001D3D" }}
               >
                 {item.author}
                 <span>({item.count})</span>

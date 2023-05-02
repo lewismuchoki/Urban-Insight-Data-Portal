@@ -9,7 +9,7 @@ const Tags = ({ tags }) => {
           <p className="tag" key={index}>
             <Link
               to={`/tag/${tag}`}
-              style={{ textDecoration: "none", color: "black" }}
+              style={{ textDecoration: "none", color: "#000814" }}
             >
               {tag}
             </Link>

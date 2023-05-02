@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { Tooltip } from "bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
-const Like = ({ handleLike, likes, userId, downloadUrl }) => {
+
+const Like = ({ handleLike, likes, userId, downloadUrl, fileName }) => {
   useEffect(() => {
     let tooltipTriggerList = [].slice.call(
       document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -37,15 +38,29 @@ const Like = ({ handleLike, likes, userId, downloadUrl }) => {
   };
 
   return (
-    <>  
+    <>
       <span
-      style={{ float: 'right', cursor: 'pointer', marginTop: '5px', marginLeft: '10px' }}
+        style={{
+          float: "right",
+          cursor: "pointer",
+          marginTop: "-10px",
+          marginLeft: "10px",
+        }}
       >
-      <FontAwesomeIcon icon={faDownload} style={{paddingRight:'5px'}} /> 
-      <a href={downloadUrl} download style={{ textDecoration: 'none', color: 'black' }}>
-        Download Document
-      </a>
-    </span>
+        <a
+          href={downloadUrl}
+          download
+          style={{ textDecoration: "none", color: "#000814" }}
+        >
+          <button
+            type="button"
+            className="border border-gray-800 px-4 py-2 rounded uppercase"
+          >
+            <FontAwesomeIcon icon={faDownload} style={{paddingRight:'5px'}} /> {" "}
+            <span style={{ color: "#FF5722" }}>{fileName}</span>
+          </button>
+        </a>
+      </span>
 
       <span
         style={{ float: "right", cursor: "pointer", marginTop: "-7px" }}
